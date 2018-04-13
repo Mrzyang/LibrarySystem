@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "CateServlet",urlPatterns={"/cate"})
+@WebServlet(name = "CateServlet",urlPatterns={"/cate.do"})
 public class CateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CateDao cateDao=new CateDao();

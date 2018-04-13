@@ -11,6 +11,7 @@ public class Book {
     private String description;
     private String detail;
     private String address;
+    private Cate cate;
 
     public int getId() {
         return id;
@@ -92,6 +93,9 @@ public class Book {
         this.address = address;
     }
 
+    public Book(){
+
+    }
     public Book(int id, String name, double price, String author, int cateId, String pdate, String img, String description, String detail, String address) {
         this.id = id;
         this.name = name;
@@ -103,5 +107,14 @@ public class Book {
         this.description = description;
         this.detail = detail;
         this.address = address;
+        this.cate=new Cate(cateId);
+    }
+
+    public Cate getCate() {
+        return cate;
+    }
+
+    public void setCate(Cate cate) {
+        this.cate = cate;
     }
 }

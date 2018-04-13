@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name="LoginServlet", urlPatterns={"/login"})
+@WebServlet(name="LoginServlet", urlPatterns={"/login.do"})
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String  username= request.getParameter("username");
@@ -44,5 +44,13 @@ public class LoginServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out=response.getWriter();
         out.println(msg);
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String type=request.getParameter("type");
+        if(type.equals("logout")){
+            HttpSession session=request.getSession();
+            session.removeAttribute("username");
+            response.sendRedirect("/login.jsp");
+        }
     }
 }

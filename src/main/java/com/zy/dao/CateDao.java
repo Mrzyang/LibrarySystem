@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CateDao {
-    public Connection con;
+    public  Connection con;
     public List queryAllCates() throws SQLException {
         con= JdbcUtil.getConnecttion();
         List<Cate> list=new ArrayList<Cate>();
@@ -26,5 +26,16 @@ public class CateDao {
         }
         con.close();
         return list;
+    }
+    public  String queryNameById(int id) throws SQLException {
+        con=JdbcUtil.getConnecttion();
+        String sql="SELECT * from cate WHERE id=?";
+        PreparedStatement psmt=con.prepareStatement(sql);
+        psmt.setInt(1,id);
+        ResultSet rs=psmt.executeQuery();
+        while (rs.next()){
+            return rs.getString(2);
+        }
+        return null;
     }
 }

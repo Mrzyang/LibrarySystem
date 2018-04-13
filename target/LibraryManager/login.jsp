@@ -13,7 +13,7 @@
 <%
     //防止重复登录
 if (session.getAttribute("username")!=null)
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("/book.do?type=show");
 %>
 <div class="admin_login_wrap">
     <h1>后台管理</h1>
@@ -32,7 +32,7 @@ if (session.getAttribute("username")!=null)
                     <li>
                         <label for="checkcode">验证码:</label>
                         <input type="text" name="checkcode" id="checkcode" size="18" class="admin_input_style" />
-                        <img id="img" src="${ctx}/authImage" onclick="javascript:changeImg()" style="position: relative;top: 10px"/>
+                        <img id="img" src="/authImage" onclick="javascript:changeImg()" style="position: relative;top: 10px"/>
                     </li>
                     <li>
                         <button tabindex="3" type="button" class="btn btn-primary" id="btn-submit">登录</button>
@@ -61,13 +61,13 @@ if (session.getAttribute("username")!=null)
             } else {
                 $.ajax({
                     type: "post",
-                    url: "/login",
+                    url: "/login.do",
                     data: $('#form_for_login').serialize(),
                     dataType: "json",
                     success: function (msg) {
                         if (msg.status == 1) {
                             layer.msg(msg.data);
-                            window.setTimeout("window.location.href='index.jsp'", 1000);
+                            window.setTimeout("window.location.href='/book.do?type=show'", 1000);
                         } else {
                             layer.msg(msg.data);
                         }
@@ -82,6 +82,6 @@ if (session.getAttribute("username")!=null)
 <script type="text/javascript">
     function changeImg(){
         var img = document.getElementById("img");
-        img.src = "${ctx}/authImage?date=" + new Date();;
+        img.src = "/authImage?date=" + new Date();;
     }
 </script>

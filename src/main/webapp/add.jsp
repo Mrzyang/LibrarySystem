@@ -18,7 +18,7 @@
     <script>
         //获取分类列表
         $(document).ready(function () {
-            $.post("cate","",function (data,status) {
+            $.post("cate.do","",function (data,status) {
                 if(data){
                     //循环读入数据并添加到院系列表中
                     $.each($.parseJSON(data),function (i,item) {
@@ -58,7 +58,7 @@
                 return;
             }
             $.ajax({
-                url: '/bookadd' ,  /*这是处理文件上传的servlet*/
+                url: '/book.do' ,  /*这是处理文件上传的servlet*/
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
@@ -69,7 +69,7 @@
                 success: function (msg) {
                     if (msg.status == 1) {
                         layer.msg(msg.data);
-                        window.setTimeout("window.location.href='index.jsp'", 1000);
+                        window.setTimeout("window.location.href='/book.do?type=show'", 1000);
                     } else {
                         layer.msg(msg.data);
                     }
@@ -82,17 +82,16 @@
 <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+            <h1 class="topbar-logo none"><a href="/book.do?type=show" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
+                <li><a class="on" href="/book.do?type=show">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="http://www.jscss.me">管理员</a></li>
-                <li><a href="http://www.jscss.me">修改密码</a></li>
-                <li><a href="/logout">退出</a></li>
+                <li><a>${username}</a></li>
+                <li><a href="/login.do?type=logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -123,6 +122,8 @@
         <div class="result-wrap">
             <div class="result-content">
                 <form  id="add-book"  enctype="multipart/form-data">
+                    <input type="hidden" value="add" name="type">
+
                     <table class="insert-tab" width="100%">
                         <tbody>
                              <tr>
@@ -150,7 +151,7 @@
                             <tr>
                                 <th>作者：</th>
                                 <td>
-                                    <input class="common-text" name="author" size="50" value="admin" type="text">
+                                    <input class="common-text" name="author" size="50"  type="text">
                                 </td>
                             </tr>
                             <tr>
