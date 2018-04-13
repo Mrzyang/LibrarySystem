@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
@@ -13,6 +13,70 @@
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="assets/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="assets/js/jquery-3.2.1.js"></script>
+    <script src="assets/layer/layer.js"></script>
+    <script>
+        //获取分类列表
+        $(document).ready(function () {
+            $.post("cate","",function (data,status) {
+                if(data){
+                    //循环读入数据并添加到院系列表中
+                    $.each($.parseJSON(data),function (i,item) {
+                        var opt="<option value="+item.id+">"+item.name+"</option>";
+                        $("#cateId").append(opt);
+                    })
+                }
+            });
+        });
+    </script>
+    <script>
+        //异步提交表单并上传图片
+        function doUpload() {
+            var formData = new FormData($( "#add-book" )[0]);
+            if(!formData.get("bookname")){
+                alert("请输入书名！");
+                return;
+            }
+            if(!formData.get("cateId")){
+                alert("请选择类别！");
+                return;
+            }
+            if(!formData.get("price")){
+                alert("请输入价格！");
+                return;
+            }
+            if(!formData.get("author")){
+                alert("请输入作者！");
+                return;
+            }
+            if(!formData.get("pdate")){
+                alert("请输入出版日期！");
+                return;
+            }
+            if(!formData.get("address")){
+                alert("请输入该书的所在位置！");
+                return;
+            }
+            $.ajax({
+                url: '/bookadd' ,  /*这是处理文件上传的servlet*/
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                //async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (msg) {
+                    if (msg.status == 1) {
+                        layer.msg(msg.data);
+                        window.setTimeout("window.location.href='index.jsp'", 1000);
+                    } else {
+                        layer.msg(msg.data);
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -28,7 +92,7 @@
             <ul class="top-info-list clearfix">
                 <li><a href="http://www.jscss.me">管理员</a></li>
                 <li><a href="http://www.jscss.me">修改密码</a></li>
-                <li><a href="http://www.jscss.me">退出</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -58,7 +122,7 @@
         <!--add  form-->
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/jscss/admin/design/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form  id="add-book"  enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
                              <tr>
@@ -72,10 +136,8 @@
                                 <th width="120">
                                     <i class="require-red">*</i>分类：</th>
                                 <td>
-                                    <select name="colId" id="catid" class="required common-text">
+                                    <select name="cateId" id="cateId" class="required common-text">
                                         <option value="">请选择</option>
-                                        <option value="19">精品界面</option>
-                                        <option value="20">推荐界面</option>
                                     </select>
                                 </td>
                             </tr>
@@ -94,26 +156,26 @@
                             <tr>
                                 <th>出版日期：</th>
                                 <td>
-                                    <input type="date" name="bday" min="1900-01-01" max="2018-04-12" class="common-text">
+                                    <input type="date" name="pdate" min="1900-01-01" max="2018-04-12" class="common-text">
                                 </td>
                             </tr>
                             <tr>
                                 <th>位置：</th>
                                 <td>
-                                    <input class="common-text" name="address" size="50" value="TP312-1889" type="text">
+                                    <input class="common-text" name="address" size="50" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th>描述：</th>
                                 <td>
-                                    <input class="common-text" name="description" size="50" value="Java学习必读经典,殿堂级著作！赢得了全球程序员的广泛赞誉." type="text">
+                                    <input class="common-text" name="description" size="50"  type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th>
                                     <i class="require-red">*</i>缩略图：</th>
                                 <td>
-                                    <input type=file name="doc" id="doc" onchange="javascript:setImagePreview();">
+                                    <input type=file name="img" id="img" onchange="javascript:setImagePreview();">
                                      <img id="preview" width=-1 height=-1 style="diplay:none" />
                                 </td>             
                             </tr>
@@ -126,7 +188,7 @@
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <button class="btn btn-primary btn6 mr10" type="button" onclick="doUpload()">提交</button>
                                     <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
                                 </td>
                             </tr>
@@ -145,7 +207,7 @@
 <!--图片及时预览-->
 <script type="text/javascript">
     function setImagePreview() {
-        var docObj = document.getElementById("doc");
+        var docObj = document.getElementById("img");
         var imgObjPreview = document.getElementById("preview");
         if (docObj.files && docObj.files[0]) {
             //火狐下，直接设img属性

@@ -21,9 +21,9 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="http://www.jscss.me">管理员</a></li>
+                <li><a>${username}</a></li>
                 <li><a href="http://www.jscss.me">修改密码</a></li>
-                <li><a href="http://www.jscss.me">退出</a></li>
+                <li><a href="/logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -58,7 +58,7 @@
                             <td><input class="common-text" placeholder="" name="bookname" value="" id="" type="text" style="width:150px"></td>
                             <th width="80">选择分类:</th>
                             <td>
-                                <select name="search-sort" id="" class="common-text">
+                                <select name="search-sort" class="common-text">
                                     <option value="">全部</option>
                                     <option value="19">精品界面</option><option value="20">推荐界面</option>
                                 </select>
@@ -105,7 +105,7 @@
                         </tr>
                         <tr>
                             <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
-                            <td><img src="/assets/bookicon/think.jpg" width="80px"></td>
+                            <td><img src="assets/bookicon/think.jpg" width="80px"></td>
                             <td>1</td>
                             <td>Java编程思想</td>
                             <td>[美]Bruce Eckel</td>
