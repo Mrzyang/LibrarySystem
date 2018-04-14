@@ -55,7 +55,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">图书管理</a><span class="crumb-step">&gt;</span><span>新增书籍</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="/book.do?type=pageList">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">图书管理</a><span class="crumb-step">&gt;</span><span>新增书籍</span></div>
         </div>
        
         <!--add  form-->

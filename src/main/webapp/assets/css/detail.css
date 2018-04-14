@@ -1,0 +1,42 @@
+.detailBox{
+    margin:25px 80px 0px;
+    width: 900px;
+}
+.imgbox{
+    margin-right: 70px;
+    float: left;
+}
+.bookimg{
+    width: 200px;
+}
+.bookcontent{
+    border-radius: 5%;
+    width: 630px;
+    float: left;
+    background-color: ghostwhite;
+}
+.bookname{
+    font-size: 30px;
+    font-weight:bold;
+}
+.price{
+    font-size: 25px;
+    color: red;
+    font-weight:bold;
+}
+.author{
+    font-family: 楷体;
+}
+.cate{
+    font-family: 仿宋;
+}
+.description{
+    font-size: 12.7px;
+}
+.detail{
+    clear: both;
+    margin-left: 270px;
+    width: 800px;
+    position: relative;
+    top: -470px;
+}

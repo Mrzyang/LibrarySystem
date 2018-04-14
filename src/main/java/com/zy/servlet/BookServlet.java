@@ -8,12 +8,10 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 
 import com.google.gson.Gson;
+import com.sun.deploy.net.HttpRequest;
 import com.zy.bean.Book;
 import com.zy.dao.BookDao;
 import net.sf.json.JSONObject;
@@ -81,7 +79,21 @@ public class BookServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        if (type.equals("detail")) {
+            try {
+                bookDetail(request,response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
+    }
+    public void bookDetail(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        int id= Integer.parseInt(request.getParameter("id"));
+        BookDao bookDao=new BookDao();
+        Book book=bookDao.queryBookById(id);
+        request.setAttribute("book",book);
+        request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
     //查询书籍并分页
     public void searchBook(HttpServletRequest request,HttpServletResponse response)throws Exception{
@@ -107,12 +119,20 @@ public class BookServlet extends HttpServlet {
         System.out.println("minPadte="+minpdate);
         System.out.println("maxPadte="+maxpdate);
 
+        //因为本查询方式是form的get，会刷新当前页面，导致表单数据丢失，这里为了交互期间，把提交前表单的值写入Session
+        HttpSession session= request.getSession();
+        session.setAttribute("formerKeywords",name);
+        session.setAttribute("formerCateId",cateId);
+        session.setAttribute("formerMinprice",minprice);
+        session.setAttribute("formerMaxprice",maxprice);
+        session.setAttribute("formerMinpdate",minpdate);
+        session.setAttribute("formerMaxpdate",minpdate);
         //sql拼接，以便号获取List<Book>和满足条件的count,这里是定义条件
-        String baseSql="from book where price>"+minprice;  //如果前端表单传入minprice为空，则minprice=0为异常处理的结果
+        String baseSql="from book where price>="+minprice;  //如果前端表单传入minprice为空，则minprice=0为异常处理的结果
         String sql=baseSql;
-        if(maxprice!=0) sql=baseSql+" and price<"+maxprice;        //如果前端表单maxprice输入不为空
-        if(!minpdate.equals("")) sql+=" and pdate> '"+minpdate+"'";
-        if(!maxpdate.equals("")) sql+=" and pdate< '"+maxpdate+"'";
+        if(maxprice!=0) sql=baseSql+" and price<="+maxprice;        //如果前端表单maxprice输入不为空
+        if(!minpdate.equals("")) sql+=" and pdate>= '"+minpdate+"'";
+        if(!maxpdate.equals("")) sql+=" and pdate<= '"+maxpdate+"'";
         if(cateId!=0) sql+=" and cateId="+cateId;
         if(!name.equals("")){
             String keywords="";

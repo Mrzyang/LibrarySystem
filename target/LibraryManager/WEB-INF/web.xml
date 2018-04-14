@@ -33,7 +33,7 @@
     </init-param>
     <init-param>
       <param-name>disabletestfilter</param-name><!-- Y:过滤无效 -->
-      <param-value>Y</param-value>
+      <param-value>N</param-value>
     </init-param>
   </filter>
   <filter-mapping>

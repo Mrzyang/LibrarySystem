@@ -54,7 +54,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/book.do?type=show">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">图书管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="/book.do?type=pageList">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">图书管理</span></div>
         </div>
         <div class="search-wrap">
             <!--用于查询得表单-->
@@ -64,7 +64,7 @@
                     <table class="search-tab">
                         <tr>  
                             <th width="70">书名:</th>
-                            <td><input class="common-text" placeholder="" name="bookname"  id="bookname" type="text" style="width:150px"></td>
+                            <td><input class="common-text" placeholder="" name="bookname"  id="bookname" value="${sessionScope.formerKeywords}" type="text" style="width:150px"></td>
                             <th width="80">选择分类:</th>
                             <td>
                                 <select name="cateId" class="common-text" id="cateId">
@@ -73,13 +73,13 @@
                             </td>
                             <th width="80">价格区间:</th>
                             <td>
-                                <input type="number" name="minprice" id="minprice" min="0" max="1000" placeholder="Min" value="0" class="common-text">--
-                                <input type="number" name="maxprice" id="maxprice" min="0" max="1000" placeholder="Max" value="1000" class="common-text">
+                                <input type="number" name="minprice" id="minprice" min="0" max="1000" placeholder="Min" value="${sessionScope.formerMinprice}" class="common-text">--
+                                <input type="number" name="maxprice" id="maxprice" min="0" max="1000" placeholder="Max" value="${sessionScope.formerMinprice}" class="common-text">
                             </td>
                             <th width="80">出版日期:</th>
                             <td>
-                                <input type="date" name="minPdate" min="1900-01-01" id="minPdate" class="common-text">--
-                                <input type="date" name="maxPdate" min="1900-01-01" id="maxPdate" class="common-text">
+                                <input type="date" name="minPdate" min="1900-01-01" id="minPdate" value="${sessionScope.formerMinpdate}" class="common-text">--
+                                <input type="date" name="maxPdate" min="1900-01-01" id="maxPdate" value="${sessionScope.formerMaxpdate}" class="common-text">
                             </td>
                             <td style="padding-left:50px"><button class="btn btn-primary btn2" type="button" onclick="searchSubmit()">查询</button></td>
                         </tr>
@@ -154,17 +154,23 @@
     </div>
     <!--/main-->
 </div>
+<p hidden id="formerCateId">${sessionScope.formerCateId}</p>
 </body>
 </html>
 
 <script>
     //获取分类列表
     $(document).ready(function () {
+        var opt;
+        var formerCateId=$('#formerCateId').text();
         $.post("cate.do","",function (data,status) {
             if(data){
                 //循环读入数据并添加到院系列表中
                 $.each($.parseJSON(data),function (i,item) {
-                    var opt="<option value="+item.id+">"+item.name+"</option>";
+                    if(item.id==formerCateId)
+                        opt="<option value="+item.id+" selected>"+item.name+"</option>";
+                    else
+                        opt="<option value="+item.id+">"+item.name+"</option>";
                     $("#cateId").append(opt);
                 })
             }
@@ -178,7 +184,8 @@
         var today= date.Format("yyyy-MM-dd");
         $('#minPdate').attr('max',today);
         $('#maxPdate').attr('max',today);
-        $('#maxPdate').val(today);
+        if($('#maxPdate').val().length==0)
+            $('#maxPdate').val(today);
     })
 </script>
 
