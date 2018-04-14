@@ -11,20 +11,7 @@
     <script type="text/javascript" src="assets/js/libs/modernizr.min.js"></script>
     <script src="assets/js/jquery-3.2.1.js"></script>
     <script src="assets/layer/layer.js"></script>
-    <script>
-        //获取分类列表
-        $(document).ready(function () {
-            $.post("cate.do","",function (data,status) {
-                if(data){
-                    //循环读入数据并添加到院系列表中
-                    $.each($.parseJSON(data),function (i,item) {
-                        var opt="<option value="+item.id+">"+item.name+"</option>";
-                        $("#cateId").append(opt);
-                    })
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/dateFormat.js"></script>
     <style type="text/css">
         td,#col-title th{text-align: center;}
     </style>
@@ -35,13 +22,14 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="/book.do?type=show">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
+                <li><a class="on" href="/book.do?type=pageList">首页</a></li>
+                <li><a href="/book.do?type=pageList" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
                 <li><a>${username}</a></li>
+                <li><a>修改密码</a></li>
                 <li><a href="/login.do?type=logout">退出</a></li>
             </ul>
         </div>
@@ -69,8 +57,10 @@
             <div class="crumb-list"><i class="icon-font"></i><a href="/book.do?type=show">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">图书管理</span></div>
         </div>
         <div class="search-wrap">
+            <!--用于查询得表单-->
             <div class="search-content">
-                <form method="post">
+                <form method="get" action="/book.do" id="searchForm">
+                    <input type="hidden" name="type" value="search">
                     <table class="search-tab">
                         <tr>  
                             <th width="70">书名:</th>
@@ -78,20 +68,20 @@
                             <th width="80">选择分类:</th>
                             <td>
                                 <select name="cateId" class="common-text" id="cateId">
-                                    <option value="">全部</option>
+                                    <option value="0">全部</option>
                                 </select>
                             </td>
                             <th width="80">价格区间:</th>
                             <td>
-                                <input type="number" name="minprice" min="0" max="1000" placeholder="Min" class="common-text">--
-                                <input type="number" name="minprice" min="0" max="1000" placeholder="Max" class="common-text">
+                                <input type="number" name="minprice" id="minprice" min="0" max="1000" placeholder="Min" value="0" class="common-text">--
+                                <input type="number" name="maxprice" id="maxprice" min="0" max="1000" placeholder="Max" value="1000" class="common-text">
                             </td>
                             <th width="80">出版日期:</th>
                             <td>
-                                <input type="date" name="bday" min="1900-01-01" max="2018-04-12" class="common-text">--
-                                <input type="date" name="bday" min="1900-01-01" max="2018-04-12" class="common-text">
+                                <input type="date" name="minPdate" min="1900-01-01" id="minPdate" class="common-text">--
+                                <input type="date" name="maxPdate" min="1900-01-01" id="maxPdate" class="common-text">
                             </td>
-                            <td style="padding-left:50px"><button type="button" class="btn btn-primary btn2" id="searchBook">查询</button></td>
+                            <td style="padding-left:50px"><button class="btn btn-primary btn2" type="button" onclick="searchSubmit()">查询</button></td>
                         </tr>
                     </table>
                 </form>
@@ -166,6 +156,51 @@
 </div>
 </body>
 </html>
+
+<script>
+    //获取分类列表
+    $(document).ready(function () {
+        $.post("cate.do","",function (data,status) {
+            if(data){
+                //循环读入数据并添加到院系列表中
+                $.each($.parseJSON(data),function (i,item) {
+                    var opt="<option value="+item.id+">"+item.name+"</option>";
+                    $("#cateId").append(opt);
+                })
+            }
+        });
+    });
+</script>
+<script>
+    //格式化日期为yyyy-MM-dd形式,将查询得最大时间范围设定为今天
+    $(document).ready(function () {
+        var date=new Date();
+        var today= date.Format("yyyy-MM-dd");
+        $('#minPdate').attr('max',today);
+        $('#maxPdate').attr('max',today);
+    })
+</script>
+
+<script>
+    //查询表单的提交
+    function searchSubmit() {
+        var minprice=$('#minprice').val();
+        var maxprice=$('#maxprice').val();
+        if(minprice>maxprice){
+            alert("输入有误，价格区间右端必须比左端大！");
+            return;
+        }
+
+        var maxpdate=$('#maxPdate').val();
+        var minpdate=$('#minPdate').val();
+        if(minpdate>maxpdate){
+            alert("输入有误，时间区间右端必须比左端大！");
+            return;
+        }
+        $('#searchForm').submit();
+    }
+</script>
+
 
 <!--删除，修改，批量删除的js脚本-->
 <script>

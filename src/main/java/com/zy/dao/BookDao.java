@@ -120,6 +120,7 @@ public class BookDao {
     }
     //用于分页，startIndex=起始索引，offset=偏移量
     public List<Book> listAllOf(int startIndex, int offset,String sql) throws SQLException {
+        System.out.println(sql);
         List<Book> books=new ArrayList<>();
         con=JdbcUtil.getConnecttion();
         PreparedStatement psmt=con.prepareStatement(sql);
@@ -143,9 +144,8 @@ public class BookDao {
         }
         return books;
     }
-    public int counts() throws SQLException {
+    public int counts(String sql) throws SQLException {
         con=JdbcUtil.getConnecttion();
-        String sql="select count(*) from book";
         PreparedStatement psmt=con.prepareStatement(sql);
         ResultSet rs= psmt.executeQuery();
         while(rs.next()) return rs.getInt(1);

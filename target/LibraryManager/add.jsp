@@ -15,68 +15,7 @@
     <script type="text/javascript" charset="utf-8" src="assets/ueditor/lang/zh-cn/zh-cn.js"></script>
     <script src="assets/js/jquery-3.2.1.js"></script>
     <script src="assets/layer/layer.js"></script>
-    <script>
-        //获取分类列表
-        $(document).ready(function () {
-            $.post("cate.do","",function (data,status) {
-                if(data){
-                    //循环读入数据并添加到院系列表中
-                    $.each($.parseJSON(data),function (i,item) {
-                        var opt="<option value="+item.id+">"+item.name+"</option>";
-                        $("#cateId").append(opt);
-                    })
-                }
-            });
-        });
-    </script>
-    <script>
-        //异步提交表单并上传图片
-        function doUpload() {
-            var formData = new FormData($( "#add-book" )[0]);
-            if(!formData.get("bookname")){
-                alert("请输入书名！");
-                return;
-            }
-            if(!formData.get("cateId")){
-                alert("请选择类别！");
-                return;
-            }
-            if(!formData.get("price")){
-                alert("请输入价格！");
-                return;
-            }
-            if(!formData.get("author")){
-                alert("请输入作者！");
-                return;
-            }
-            if(!formData.get("pdate")){
-                alert("请输入出版日期！");
-                return;
-            }
-            if(!formData.get("address")){
-                alert("请输入该书的所在位置！");
-                return;
-            }
-            $.ajax({
-                url: '/book.do' ,  /*这是处理文件上传的servlet*/
-                type: 'POST',
-                data: formData,
-                dataType: 'json',
-                //async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (msg) {
-                    if (msg.status == 1) {
-                        layer.msg(msg.data);
-                        window.setTimeout("window.location.href='/book.do?type=pageList'", 1000);
-                    } else {
-                        layer.msg(msg.data);
-                    }
-                }
-            });
-        }
-    </script>
+    <script src="assets/js/dateFormat.js"></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -91,6 +30,7 @@
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
                 <li><a>${username}</a></li>
+                <li><a>修改密码</a></li>
                 <li><a href="/login.do?type=logout">退出</a></li>
             </ul>
         </div>
@@ -157,7 +97,7 @@
                             <tr>
                                 <th>出版日期：</th>
                                 <td>
-                                    <input type="date" name="pdate" min="1900-01-01" max="2018-04-12" class="common-text">
+                                    <input type="date" name="pdate" id="pdate" min="1900-01-01" class="common-text">
                                 </td>
                             </tr>
                             <tr>
@@ -204,6 +144,80 @@
 </div>
 </body>
 </html>
+
+<script>
+    //格式化日期为yyyy-MM-dd形式,将书籍出版时间最晚设定为今天
+    $(document).ready(function () {
+        var date=new Date();
+        var today= date.Format("yyyy-MM-dd");
+        $('#pdate').attr('max',today);
+    })
+</script>
+
+<script>
+    //获取分类列表
+    $(document).ready(function () {
+        $.post("cate.do","",function (data,status) {
+            if(data){
+                //循环读入数据并添加到院系列表中
+                $.each($.parseJSON(data),function (i,item) {
+                    var opt="<option value="+item.id+">"+item.name+"</option>";
+                    $("#cateId").append(opt);
+                })
+            }
+        });
+    });
+</script>
+<script>
+    //异步提交表单并上传图片
+    function doUpload() {
+        var formData = new FormData($( "#add-book" )[0]);
+        if(!formData.get("bookname")){
+            alert("请输入书名！");
+            return;
+        }
+        if(!formData.get("cateId")){
+            alert("请选择类别！");
+            return;
+        }
+        if(!formData.get("price")){
+            alert("请输入价格！");
+            return;
+        }
+        if(!formData.get("author")){
+            alert("请输入作者！");
+            return;
+        }
+        if(!formData.get("pdate")){
+            alert("请输入出版日期！");
+            return;
+        }
+        if(!formData.get("address")){
+            alert("请输入该书的所在位置！");
+            return;
+        }
+        $.ajax({
+            url: '/book.do' ,  /*这是处理文件上传的servlet*/
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            //async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (msg) {
+                if (msg.status == 1) {
+                    layer.msg(msg.data);
+                    window.setTimeout("window.location.href='/book.do?type=pageList'", 1000);
+                } else {
+                    layer.msg(msg.data);
+                }
+            }
+        });
+    }
+</script>
+
+
 
 <!--图片及时预览-->
 <script type="text/javascript">

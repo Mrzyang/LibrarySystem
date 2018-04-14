@@ -74,7 +74,81 @@ public class BookServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        if (type.equals("search")) {
+            try {
+                searchBook(request,response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
+    }
+    //查询书籍并分页
+    public void searchBook(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        //获取查询条件的参数
+        String name=request.getParameter("bookname");
+        int cateId= Integer.parseInt(request.getParameter("cateId"));
+        double minprice;
+        double maxprice;
+        try {
+            //防止查询表单minprice输入为空转化为double出现异常
+            minprice = Integer.valueOf(request.getParameter("minprice"));
+        } catch (NumberFormatException e) {
+            minprice = 0;
+        }
+        try {
+            //防止查询表单maxprice输入为空转化为double出现异常
+            maxprice = Integer.valueOf(request.getParameter("maxprice"));
+        } catch (NumberFormatException e) {
+            maxprice = 0;
+        }
+        String minpdate=request.getParameter("minPdate");
+        String maxpdate=request.getParameter("maxPdate");
+        System.out.println("minPadte="+minpdate);
+        System.out.println("maxPadte="+maxpdate);
+
+        //sql拼接，以便号获取List<Book>和满足条件的count,这里是定义条件
+        String baseSql="from book where price>"+minprice;  //如果前端表单传入minprice为空，则minprice=0为异常处理的结果
+        String sql=baseSql;
+        if(maxprice!=0) sql=baseSql+" and price<"+maxprice;        //如果前端表单maxprice输入不为空
+        if(!minpdate.equals("")) sql+=" and pdate> '"+minpdate+"'";
+        if(!maxpdate.equals("")) sql+=" and pdate< '"+maxpdate+"'";
+        if(cateId!=0) sql+=" and cateId="+cateId;
+        if(!name.equals("")){
+            String keywords="";
+            for(int i=0;i<name.length();i++) //将关键字分解成一个一个字进行模糊查询
+                keywords+="%"+name.charAt(i);
+            sql+=" and name like "+"'"+keywords+"%'";
+        }
+        String countSql="select count(*) "+sql;   //查询满足条件的记录数
+        sql="select * "+sql+" limit ?,?";
+        System.out.println(sql);
+        System.out.println(countSql);
+
+
+        //以下作为分页处理
+        BookDao bookDao=new BookDao();
+        String p = request.getParameter("page");
+        int page;
+        try {
+            //当前页数
+            page = Integer.valueOf(p);
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        //书籍总数
+        int totalBooks = bookDao.counts(countSql);
+        //每页书籍数
+        int booksPerPage = 5;
+        //总页数
+        int totalPages = totalBooks % booksPerPage == 0 ? totalBooks / booksPerPage : totalBooks / booksPerPage + 1;
+        //本页起始书籍序号
+        int beginIndex = (page - 1) * booksPerPage;
+        List<Book> books=bookDao.listAllOf(beginIndex,booksPerPage,sql);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("page", page);
+        request.setAttribute("books", books);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     //删除单本书
@@ -180,6 +254,7 @@ public class BookServlet extends HttpServlet {
         PrintWriter out=response.getWriter();
         out.println(msg);
     }
+    //分页查询并渲染
     public void pageList(HttpServletRequest request,HttpServletResponse response)throws Exception{
         BookDao bookDao=new BookDao();
         String p = request.getParameter("page");
@@ -191,7 +266,7 @@ public class BookServlet extends HttpServlet {
             page = 1;
         }
         //书籍总数
-        int totalBooks = bookDao.counts();
+        int totalBooks = bookDao.counts("select count(*) from book");
         //每页书籍数
         int booksPerPage = 5;
         //总页数
