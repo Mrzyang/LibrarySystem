@@ -7,6 +7,7 @@
     <title>后台管理</title>
     <link rel="stylesheet" type="text/css" href="assets/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/pagination.css">
     <script type="text/javascript" src="assets/js/libs/modernizr.min.js"></script>
     <script src="assets/js/jquery-3.2.1.js"></script>
     <script src="assets/layer/layer.js"></script>
@@ -24,6 +25,9 @@
             });
         });
     </script>
+    <style type="text/css">
+        td,#col-title th{text-align: center;}
+    </style>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -104,7 +108,7 @@
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
-                        <tr>
+                        <tr id="col-title">
                             <th class="tc" width="5%"><input id="allChoose" name="" type="checkbox"></th>
                             <th>缩略图</th>
                             <th>ID</th>
@@ -120,7 +124,7 @@
                         <c:forEach var="i" items="${books}">
                         <tr>
                             <td class="tc"><input name="ids[]" value="${i.id}" type="checkbox" class="singleChoose"></td>
-                            <td><img src="${i.img}" width="80px"></td>
+                            <td><img src="${i.img}" width="80px" height="85"></td>
                             <td>${i.id}</td>
                             <td>${i.name}</td>
                             <td>${i.author}</td>
@@ -128,8 +132,8 @@
                             <td>${i.pdate}</td>
                             <td>${i.price}</td>
                             <td>${i.address}</td>
-                            <td>${i.description}</td>
-                            <td>
+                            <td style="text-align: left">${i.description}</td>
+                            <td align="center">
                                 <a class="link-update btn btn-success btn2" href="/book.do?type=detail&id=${i.id}">查看</a>
                                 <a class="link-update btn btn-warning btn2" href="/book.do?type=update&id=${i.id}">修改</a>
                                 <a class="link-del btn btn-danger btn2" onclick="detete_book(${i.id},this)">删除</a>
@@ -137,7 +141,23 @@
                         </tr>
                         </c:forEach>
                     </table>
-                    <div class="list-page"> 2 条 1/1 页</div>
+                    <div class="list-page">
+                        <ul class="pagination">
+                            <li><a href="/book.do?page=1&type=pageList">首页</a></li>
+                            <li><a href="/book.do?type=pageList&page=${page-1>1?page-1:1}">&laquo;</a></li>
+
+                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                <c:set var="active" value="${loop.index==page?'active':''}"/>
+                                <li class="${active}">
+                                    <a href="/book.do?type=pageList&page=${loop.index}">${loop.index}</a>
+                                </li>
+                            </c:forEach>
+                            <li>
+                                <a href="/book.do?type=pageList&page=${page+1<totalPages?page+1:totalPages}">&raquo;</a>
+                            </li>
+                            <li><a href="/book.do?type=pageList&page=${totalPages}">尾页</a></li>
+                        </ul>
+                    </div>
                 </div>
             </form>
         </div>

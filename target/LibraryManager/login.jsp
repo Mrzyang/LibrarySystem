@@ -67,7 +67,7 @@ if (session.getAttribute("username")!=null)
                     success: function (msg) {
                         if (msg.status == 1) {
                             layer.msg(msg.data);
-                            window.setTimeout("window.location.href='/book.do?type=show'", 1000);
+                            window.setTimeout("window.location.href='/book.do?type=pageList'", 1000);
                         } else {
                             layer.msg(msg.data);
                         }

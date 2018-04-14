@@ -118,4 +118,44 @@ public class BookDao {
         isSuccess=true;
         return isSuccess;
     }
+    //用于分页，startIndex=起始索引，offset=偏移量
+    public List<Book> listAllOf(int startIndex, int offset,String sql) throws SQLException {
+        List<Book> books=new ArrayList<>();
+        con=JdbcUtil.getConnecttion();
+        PreparedStatement psmt=con.prepareStatement(sql);
+        psmt.setInt(1,startIndex);
+        psmt.setInt(2,offset);
+        ResultSet rs=psmt.executeQuery();
+        while(rs.next()){
+            Book book=new Book(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getDouble(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getString(6),
+                    rs.getString(7),
+                    rs.getString(8),
+                    rs.getString(9),
+                    rs.getString(10)
+            );
+            books.add(book);
+        }
+        return books;
+    }
+    public int counts() throws SQLException {
+        con=JdbcUtil.getConnecttion();
+        String sql="select count(*) from book";
+        PreparedStatement psmt=con.prepareStatement(sql);
+        ResultSet rs= psmt.executeQuery();
+        while(rs.next()) return rs.getInt(1);
+        return 0;
+    }
+    //分页显示所有的书籍
+    public List<Book> getAllBooks(int startIndex, int offset) throws SQLException {
+        List<Book> books=new ArrayList<>();
+        String sql="SELECT * from book limit ?,?";
+        books=listAllOf(startIndex,offset,sql);
+        return books;
+    }
 }

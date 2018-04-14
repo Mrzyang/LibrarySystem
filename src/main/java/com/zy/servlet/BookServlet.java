@@ -37,9 +37,18 @@ public class BookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String type=request.getParameter("type");
+        //不分页显示所有书籍
         if (type.equals("show")) {
             try {
                 showBooks(request,response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        //分页显示所有书籍
+        if (type.equals("pageList")) {
+            try {
+                pageList(request,response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -170,5 +179,29 @@ public class BookServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out=response.getWriter();
         out.println(msg);
+    }
+    public void pageList(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        BookDao bookDao=new BookDao();
+        String p = request.getParameter("page");
+        int page;
+        try {
+            //当前页数
+            page = Integer.valueOf(p);
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        //书籍总数
+        int totalBooks = bookDao.counts();
+        //每页书籍数
+        int booksPerPage = 5;
+        //总页数
+        int totalPages = totalBooks % booksPerPage == 0 ? totalBooks / booksPerPage : totalBooks / booksPerPage + 1;
+        //本页起始书籍序号
+        int beginIndex = (page - 1) * booksPerPage;
+        List<Book> books = bookDao.getAllBooks(beginIndex, booksPerPage);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("page", page);
+        request.setAttribute("books", books);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 }
