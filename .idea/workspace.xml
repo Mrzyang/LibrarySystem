@@ -7,19 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c7073ec-1e95-42ee-874e-b4c19dc04284" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/dateFormat.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/add.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/add.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/UserJdbc/dao/DepartmentDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/UserJdbc/dao/StudentDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/UserJdbc/domain/Department.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/UserJdbc/domain/Student.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/UserJdbc/servlet/DepartmentServlet.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/UserJdbc/servlet/StudentServlet.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/update.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/update.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/LibraryManager.war" afterPath="$PROJECT_DIR$/target/LibraryManager.war" />
-      <change beforePath="$PROJECT_DIR$/target/LibraryManager/WEB-INF/classes/com/zy/servlet/BookServlet.class" afterPath="$PROJECT_DIR$/target/LibraryManager/WEB-INF/classes/com/zy/servlet/BookServlet.class" />
-      <change beforePath="$PROJECT_DIR$/target/LibraryManager/add.jsp" afterPath="$PROJECT_DIR$/target/LibraryManager/add.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/LibraryManager/home.jsp" afterPath="$PROJECT_DIR$/target/LibraryManager/home.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/LibraryManager/update.jsp" afterPath="$PROJECT_DIR$/target/LibraryManager/update.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zy/servlet/BookServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/zy/servlet/BookServlet.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,48 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="BookServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="114" column="47" lean-forward="false" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/update.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3300">
-              <caret line="156" column="45" lean-forward="false" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1523696772754" expanded="true" signature="451:498" ph="insert into book... " />
-                <marker date="1523696772754" expanded="true" signature="1191:1209" ph="SELECT * fro... book" />
-                <marker date="1523696772754" expanded="true" signature="1978:2004" ph="delete from book... " />
-                <marker date="1523696772754" expanded="true" signature="1978:2005" ph="delete from book... " />
-                <marker date="1523696772754" expanded="true" signature="2334:2361" ph="delete from book... " />
-                <marker date="1523696772754" expanded="true" signature="2676:2705" ph="SELECT * FRO... book" />
-                <marker date="1523696772754" expanded="true" signature="3491:3512" ph="UPDATE book... " />
-                <marker date="1523696772754" expanded="true" signature="3491:3597" ph="UPDATE book... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,7 +100,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zy/bean/Cate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/servlet/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/servlet/CateServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/test/java/com/zy/dao/BookDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/utils/pager/BookRespository.java" />
@@ -154,9 +109,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/assets/js/dateFormat.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/add.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/update.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
       </list>
     </option>
   </component>
@@ -181,8 +137,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="368" />
-    <option name="y" value="244" />
+    <option name="x" value="75" />
+    <option name="y" value="173" />
     <option name="width" value="1400" />
     <option name="height" value="1049" />
   </component>
@@ -236,21 +192,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="zy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LibraryManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibraryManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LibraryManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LibraryManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -518,7 +459,7 @@
       <workItem from="1523521861811" duration="13089000" />
       <workItem from="1523541591192" duration="13452000" />
       <workItem from="1523580835739" duration="53464000" />
-      <workItem from="1523670515978" duration="22663000" />
+      <workItem from="1523670515978" duration="24393000" />
     </task>
     <servers />
   </component>
@@ -555,7 +496,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116347000" />
+    <option name="totallyTimeSpent" value="118077000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -567,8 +508,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="368" y="244" width="1400" height="1049" extended-state="1" />
-    <editor active="true" />
+    <frame x="75" y="173" width="1400" height="1049" extended-state="1" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -585,7 +525,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44570136" sideWeight="0.4869762" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44570136" sideWeight="0.4869762" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23497854" sideWeight="0.5130238" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -616,8 +556,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/image.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/insert.html" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/ueditor/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -636,14 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/utils/JdbcUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,18 +729,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/bean/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="109" column="35" lean-forward="false" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/bean/Cate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="801">
           <caret line="44" column="11" lean-forward="false" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -818,13 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -901,36 +817,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="156" column="45" lean-forward="false" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1523696772754" expanded="true" signature="451:498" ph="insert into book... " />
-            <marker date="1523696772754" expanded="true" signature="1191:1209" ph="SELECT * fro... book" />
-            <marker date="1523696772754" expanded="true" signature="1978:2004" ph="delete from book... " />
-            <marker date="1523696772754" expanded="true" signature="1978:2005" ph="delete from book... " />
-            <marker date="1523696772754" expanded="true" signature="2334:2361" ph="delete from book... " />
-            <marker date="1523696772754" expanded="true" signature="2676:2705" ph="SELECT * FRO... book" />
-            <marker date="1523696772754" expanded="true" signature="3491:3512" ph="UPDATE book... " />
-            <marker date="1523696772754" expanded="true" signature="3491:3597" ph="UPDATE book... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="69" column="69" lean-forward="true" selection-start-line="69" selection-start-column="69" selection-end-line="69" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -951,10 +841,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3300">
+          <caret line="156" column="45" lean-forward="false" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1523696772754" expanded="true" signature="451:498" ph="insert into book... " />
+            <marker date="1523696772754" expanded="true" signature="1191:1209" ph="SELECT * fro... book" />
+            <marker date="1523696772754" expanded="true" signature="1978:2004" ph="delete from book... " />
+            <marker date="1523696772754" expanded="true" signature="1978:2005" ph="delete from book... " />
+            <marker date="1523696772754" expanded="true" signature="2334:2361" ph="delete from book... " />
+            <marker date="1523696772754" expanded="true" signature="2676:2705" ph="SELECT * FRO... book" />
+            <marker date="1523696772754" expanded="true" signature="3491:3512" ph="UPDATE book... " />
+            <marker date="1523696772754" expanded="true" signature="3491:3597" ph="UPDATE book... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/update.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+        <state relative-caret-position="409">
+          <caret line="155" column="38" lean-forward="false" selection-start-line="155" selection-start-column="38" selection-end-line="155" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/bean/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="109" column="35" lean-forward="false" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/utils/JdbcUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/utils/Md5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/utils/VerifyCodeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="180" column="34" lean-forward="false" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
           <folding />
         </state>
       </provider>

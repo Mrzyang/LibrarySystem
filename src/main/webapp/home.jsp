@@ -178,6 +178,7 @@
         var today= date.Format("yyyy-MM-dd");
         $('#minPdate').attr('max',today);
         $('#maxPdate').attr('max',today);
+        $('#maxPdate').val(today);
     })
 </script>
 

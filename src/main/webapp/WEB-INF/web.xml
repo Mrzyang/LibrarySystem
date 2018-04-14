@@ -4,25 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
-  <!--StudentServlet-->
-  <servlet>
-    <servlet-name>StudentServlet</servlet-name>
-    <servlet-class>com.zy.UserJdbc.servlet.StudentServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StudentServlet</servlet-name>
-    <url-pattern>/student</url-pattern>
-  </servlet-mapping>
-
-  <!--DepartmentServlet-->
-  <servlet>
-    <servlet-name>DepartmentServlet</servlet-name>
-    <servlet-class>com.zy.UserJdbc.servlet.DepartmentServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DepartmentServlet</servlet-name>
-    <url-pattern>/department</url-pattern>
-  </servlet-mapping>
   <!--验证码-->
   <servlet>
     <servlet-name>AuthImage</servlet-name>

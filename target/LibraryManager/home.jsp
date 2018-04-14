@@ -22,8 +22,8 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="/book.do?type=show">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
+                <li><a class="on" href="/book.do?type=pageList">首页</a></li>
+                <li><a href="/book.do?type=pageList" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
@@ -178,6 +178,7 @@
         var today= date.Format("yyyy-MM-dd");
         $('#minPdate').attr('max',today);
         $('#maxPdate').attr('max',today);
+        $('#maxPdate').val(today);
     })
 </script>
 

@@ -144,6 +144,7 @@
     <!--/main-->
 </div>
 <div id="detail-content" style="display: none">${book.detail}</div>
+<p id="bookCateId" hidden>${book.cateId}</p>
 </body>
 </html>
 
@@ -159,11 +160,17 @@
 <script>
     //获取分类列表
     $(document).ready(function () {
+        var cateId=$('#bookCateId').text();
+        console.log("cateId="+cateId);
+        var opt;
         $.post("cate.do","",function (data,status) {
             if(data){
                 //循环读入数据并添加到院系列表中
                 $.each($.parseJSON(data),function (i,item) {
-                    var opt="<option value="+item.id+">"+item.name+"</option>";
+                    if(item.id==cateId)
+                        opt="<option value="+item.id+" selected>"+item.name+"</option>";
+                   else
+                        opt="<option value="+item.id+">"+item.name+"</option>";
                     $("#cateId").append(opt);
                 })
             }
