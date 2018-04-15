@@ -76,7 +76,7 @@ if (session.getAttribute("username")!=null)
             }
         });
 
-
+        //回车提交表单
         $("#form_for_login").keydown(function(e){
             var e = e || event,
                 keycode = e.which || e.keyCode;
