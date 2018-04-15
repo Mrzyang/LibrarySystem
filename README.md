@@ -11,13 +11,13 @@
 
 #### 项目预览：
 1. **后台主页**：
-![image](https://note.youdao.com/yws/api/personal/file/69E496956FE24CB3B9B18A8E005D114B?method=download&shareKey=3564f8c41877cc553ca1664ff0c34dca)
+![image](http://zymmc.kuaiyunds.com/zymmc/github/home.jpg)
 
 2. **修改信息**：
-![image](https://note.youdao.com/yws/api/personal/file/746CC6C604C54662916C0CB9B862EA99?method=download&shareKey=adcf0f218a661ed0449ed5c090108778)
+![image](http://zymmc.kuaiyunds.com/zymmc/github/update.jpg)
 
 3. **详细信息**：
-![image](https://note.youdao.com/yws/api/personal/file/09BFCBCE2CC04D2FAAD7121FB99F74D2?method=download&shareKey=0263bdf82ce29a4d94bf3f81219cfaf9)
+![image](http://zymmc.kuaiyunds.com/zymmc/github/detail.jpg)
 
 
     QQ:   846965599  欢迎交流技术
