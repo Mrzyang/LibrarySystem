@@ -268,4 +268,19 @@ public class VerifyCodeUtils{
             outputImage(w, h, file, verifyCode);
         }
     }
+  public static  String codeToLowerCase(String str){
+        StringBuffer sb = new StringBuffer();
+        if(str!=null){
+            for(int i=0;i<str.length();i++){
+                char c = str.charAt(i);
+                if(Character.isLowerCase(c))
+                    sb.append(c);
+                if(Character.isUpperCase(c))
+                    sb.append(Character.toLowerCase(c));
+                if (Character.isDigit(c))
+                    sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
 }

@@ -3,6 +3,7 @@ package com.zy.servlet;
 
 
 import com.zy.dao.UserDao;
+import com.zy.utils.VerifyCodeUtils;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -28,15 +29,18 @@ public class LoginServlet extends HttpServlet {
         Map map=new HashMap();
         map.put("status","0");
         map.put("data","登录失败");
-        if(code.equals(checkcode)){
-            UserDao userDao=new UserDao();
-            try {
-                if(userDao.isRegistered(username,password))
-                    map.put("status","1");
+        if(checkcode.length()==4){   //设定验证码为4位
+            checkcode= VerifyCodeUtils.codeToLowerCase(checkcode);  //前台输入的验证码转为小写字母
+            if(code.equals(checkcode)){
+                UserDao userDao=new UserDao();
+                try {
+                    if(userDao.isRegistered(username,password))
+                        map.put("status","1");
                     map.put("data","登录成功！");
                     session.setAttribute("username",username);
-            } catch (SQLException e) {
-                e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         JSONObject msg=JSONObject.fromObject(map);
