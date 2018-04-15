@@ -28,6 +28,12 @@
 ![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/detail.png)
 
 
+4. **欢迎赞助**：
+> 求打赏已买服务器继续折腾部署的问题
+
+
+![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/alipay.png)
+
     QQ:   846965599  欢迎交流技术
     CSDN:https://blog.csdn.net/qq_32388977
     2018-4-14
