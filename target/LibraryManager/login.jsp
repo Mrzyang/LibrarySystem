@@ -13,7 +13,7 @@
 <%
     //防止重复登录
 if (session.getAttribute("username")!=null)
-    response.sendRedirect("/book.do?type=show");
+    response.sendRedirect("/book.do?type=pageList");
 %>
 <div class="admin_login_wrap">
     <h1>后台管理</h1>
