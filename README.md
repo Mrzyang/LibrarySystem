@@ -11,13 +11,13 @@
 
 #### 项目预览：
 1. **后台主页**：
-![image](http://zymmc.kuaiyunds.com/zymmc/github/home.jpg)
+![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/home.png)
 
 2. **修改信息**：
-![image](http://zymmc.kuaiyunds.com/zymmc/github/update.jpg)
+![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/update.png)
 
 3. **详细信息**：
-![image](http://zymmc.kuaiyunds.com/zymmc/github/detail.jpg)
+![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/detail.png)
 
 
     QQ:   846965599  欢迎交流技术
