@@ -64,7 +64,7 @@
                     <table class="search-tab">
                         <tr>  
                             <th width="70">书名:</th>
-                            <td><input class="common-text" placeholder="" name="bookname"  id="bookname" value="${sessionScope.formerKeywords}" type="text" style="width:150px"></td>
+                            <td><input class="common-text" placeholder="" name="bookname"  id="bookname" value="${type=="search"?formerKeywords:""}" type="text" style="width:150px"></td>
                             <th width="80">选择分类:</th>
                             <td>
                                 <select name="cateId" class="common-text" id="cateId">
@@ -73,13 +73,13 @@
                             </td>
                             <th width="80">价格区间:</th>
                             <td>
-                                <input type="number" name="minprice" id="minprice" min="0" max="1000" placeholder="Min" value="${sessionScope.formerMinprice}" class="common-text">--
-                                <input type="number" name="maxprice" id="maxprice" min="0" max="1000" placeholder="Max" value="${sessionScope.formerMinprice}" class="common-text">
+                                <input type="number" name="minprice" id="minprice" min="0" max="1000" placeholder="Min" value="${type=="search"?formerMinprice:""}" class="common-text">--
+                                <input type="number" name="maxprice" id="maxprice" min="0" max="1000" placeholder="Max" value="${type=="search"?formerMinprice:""}" class="common-text">
                             </td>
                             <th width="80">出版日期:</th>
                             <td>
-                                <input type="date" name="minPdate" min="1900-01-01" id="minPdate" value="${sessionScope.formerMinpdate}" class="common-text">--
-                                <input type="date" name="maxPdate" min="1900-01-01" id="maxPdate" value="${sessionScope.formerMaxpdate}" class="common-text">
+                                <input type="date" name="minPdate" min="1900-01-01" id="minPdate" value="${type=="search"?formerMinpdate:""}" class="common-text">--
+                                <input type="date" name="maxPdate" min="1900-01-01" id="maxPdate" value="${type=="search"?formerMaxpdate:""}" class="common-text">
                             </td>
                             <td style="padding-left:50px"><button class="btn btn-primary btn2" type="button" onclick="searchSubmit()">查询</button></td>
                         </tr>
@@ -132,20 +132,21 @@
                         </c:forEach>
                     </table>
                     <div class="list-page">
+                        <c:set var="params" value="${type=='search'?queryParams:''}"/>
                         <ul class="pagination">
-                            <li><a href="/book.do?page=1&type=pageList">首页</a></li>
-                            <li><a href="/book.do?type=pageList&page=${page-1>1?page-1:1}">&laquo;</a></li>
+                            <li><a href="/book.do?page=1&type=${type}${params}">首页</a></li>
+                            <li><a href="/book.do?type=${type}&page=${page-1>1?page-1:1}${params}">&laquo;</a></li>
 
                             <c:forEach begin="1" end="${totalPages}" varStatus="loop">
                                 <c:set var="active" value="${loop.index==page?'active':''}"/>
                                 <li class="${active}">
-                                    <a href="/book.do?type=pageList&page=${loop.index}">${loop.index}</a>
+                                    <a href="/book.do?type=${type}&page=${loop.index}${params}">${loop.index}</a>
                                 </li>
                             </c:forEach>
                             <li>
-                                <a href="/book.do?type=pageList&page=${page+1<totalPages?page+1:totalPages}">&raquo;</a>
+                                <a href="/book.do?type=${type}&page=${page+1<totalPages?page+1:totalPages}${params}">&raquo;</a>
                             </li>
-                            <li><a href="/book.do?type=pageList&page=${totalPages}">尾页</a></li>
+                            <li><a href="/book.do?type=${type}&page=${totalPages}${params}">尾页</a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,7 +155,7 @@
     </div>
     <!--/main-->
 </div>
-<p hidden id="formerCateId">${sessionScope.formerCateId}</p>
+<p hidden id="formerCateId">${type=="search"?formerCateId:0}</p>
 </body>
 </html>
 

@@ -95,32 +95,27 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("book",book);
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
-    //查询书籍并分页
+    //根据条件查询书籍并分页
     public void searchBook(HttpServletRequest request,HttpServletResponse response)throws Exception{
         //获取查询条件的参数
         String name=request.getParameter("bookname");
         int cateId= Integer.parseInt(request.getParameter("cateId"));
         double minprice;
-        double maxprice;
         try {
             //防止查询表单minprice输入为空转化为double出现异常
             minprice = Integer.valueOf(request.getParameter("minprice"));
         } catch (NumberFormatException e) {
             minprice = 0;
         }
-        try {
-            //防止查询表单maxprice输入为空转化为double出现异常
-            maxprice = Integer.valueOf(request.getParameter("maxprice"));
-        } catch (NumberFormatException e) {
-            maxprice = 0;
-        }
+
+        String maxprice = request.getParameter("maxprice");
         String minpdate=request.getParameter("minPdate");
         String maxpdate=request.getParameter("maxPdate");
-        System.out.println("minPadte="+minpdate);
-        System.out.println("maxPadte="+maxpdate);
 
-        //因为本查询方式是form的get，会刷新当前页面，导致表单数据丢失，这里为了交互期间，把提交前表单的值写入Session
-        HttpSession session= request.getSession();
+        String queryParams="&bookname="+name+"&cateId="+cateId+"&minprice="+minprice+"&maxprice="+maxprice+"&minPdate="+minpdate+"&maxPdate="+maxpdate;
+        request.setAttribute("queryParams",queryParams);
+        //因为本查询方式是form的get，会刷新当前页面，导致表单数据丢失，这里为了交互良好起见，把提交前表单的值写入Session中
+        HttpSession session=request.getSession();
         session.setAttribute("formerKeywords",name);
         session.setAttribute("formerCateId",cateId);
         session.setAttribute("formerMinprice",minprice);
@@ -130,7 +125,7 @@ public class BookServlet extends HttpServlet {
         //sql拼接，以便号获取List<Book>和满足条件的count,这里是定义条件
         String baseSql="from book where price>="+minprice;  //如果前端表单传入minprice为空，则minprice=0为异常处理的结果
         String sql=baseSql;
-        if(maxprice!=0) sql=baseSql+" and price<="+maxprice;        //如果前端表单maxprice输入不为空
+        if(!maxprice.equals("")) sql=baseSql+" and price<="+maxprice;        //如果前端表单maxprice输入不为空
         if(!minpdate.equals("")) sql+=" and pdate>= '"+minpdate+"'";
         if(!maxpdate.equals("")) sql+=" and pdate<= '"+maxpdate+"'";
         if(cateId!=0) sql+=" and cateId="+cateId;
@@ -168,6 +163,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("page", page);
         request.setAttribute("books", books);
+        request.setAttribute("type","search");  //这里区分请求是查询还是不查询 因为分页按钮的href=/book.do?type=${type}&page=页号
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
@@ -274,7 +270,7 @@ public class BookServlet extends HttpServlet {
         PrintWriter out=response.getWriter();
         out.println(msg);
     }
-    //分页查询并渲染
+    //后台主页查询出所有记录并分页显示
     public void pageList(HttpServletRequest request,HttpServletResponse response)throws Exception{
         BookDao bookDao=new BookDao();
         String p = request.getParameter("page");
@@ -297,6 +293,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("page", page);
         request.setAttribute("books", books);
+        request.setAttribute("type","pageList");
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 }

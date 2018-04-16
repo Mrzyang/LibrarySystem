@@ -8,11 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0c7073ec-1e95-42ee-874e-b4c19dc04284" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/servlet/LoginServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/zy/servlet/LoginServlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/utils/VerifyCodeUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/zy/utils/VerifyCodeUtils.java" />
-      <change beforePath="$PROJECT_DIR$/target/LibraryManager.war" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zy/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/zy/servlet/LoginServlet.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zy/utils/VerifyCodeUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/zy/utils/VerifyCodeUtils.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,21 +36,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="LoginServlet.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/servlet/LoginServlet.java">
+      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="774">
+              <caret line="134" column="82" lean-forward="false" selection-start-line="134" selection-start-column="82" selection-end-line="134" selection-end-column="82" />
+              <folding>
+                <element signature="e#7128#7135#1#HTML" expanded="true" />
+                <element signature="e#7725#7732#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VerifyCodeUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/utils/VerifyCodeUtils.java">
+      <file leaf-file-name="BookServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="277" column="44" lean-forward="false" selection-start-line="277" selection-start-column="44" selection-end-line="277" selection-end-column="44" />
+            <state relative-caret-position="2525">
+              <caret line="115" column="41" lean-forward="false" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -138,11 +138,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/assets/css/main.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/js/dateFormat.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/dao/BookDao.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/update.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/add.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/js/detail.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/css/detail.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/detail.jsp" />
@@ -153,6 +151,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zy/convert.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/utils/VerifyCodeUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zy/servlet/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/home.jsp" />
       </list>
     </option>
   </component>
@@ -177,8 +177,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-55" />
-    <option name="y" value="124" />
+    <option name="x" value="44" />
+    <option name="y" value="91" />
     <option name="width" value="1400" />
     <option name="height" value="1041" />
   </component>
@@ -200,8 +200,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,12 +237,26 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="zy" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="LibraryManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LibraryManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="zy" type="462c0819:PsiDirectoryNode" />
+              <item name="servlet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LibraryManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LibraryManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -600,6 +616,8 @@
       <workItem from="1523784781229" duration="119000" />
       <workItem from="1523784992937" duration="1106000" />
       <workItem from="1523789884458" duration="2193000" />
+      <workItem from="1523873167355" duration="6714000" />
+      <workItem from="1523880313236" duration="37000" />
     </task>
     <servers />
   </component>
@@ -636,7 +654,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147377000" />
+    <option name="totallyTimeSpent" value="154128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -648,7 +666,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-55" y="124" width="1400" height="1041" extended-state="0" />
+    <frame x="44" y="91" width="1400" height="1041" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -661,11 +679,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3344749" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33408833" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33861238" sideWeight="0.48287672" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32579187" sideWeight="0.48287672" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31447965" sideWeight="0.5171233" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -886,14 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="95" column="44" lean-forward="false" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -942,7 +952,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="350">
             <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -964,35 +973,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="105" column="18" lean-forward="false" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/convert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="23" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/convert.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/utils/VerifyCodeUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
+        <state relative-caret-position="6525">
           <caret line="277" column="44" lean-forward="false" selection-start-line="277" selection-start-column="44" selection-end-line="277" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/servlet/LoginServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
+        <state relative-caret-position="525">
           <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zy/servlet/BookServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2525">
+          <caret line="115" column="41" lean-forward="false" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="134" column="82" lean-forward="false" selection-start-line="134" selection-start-column="82" selection-end-line="134" selection-end-column="82" />
+          <folding>
+            <element signature="e#7128#7135#1#HTML" expanded="true" />
+            <element signature="e#7725#7732#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
