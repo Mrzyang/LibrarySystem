@@ -29,6 +29,7 @@ public class BookDao {
         psmt.setString(9,book.getAddress());
         psmt.executeUpdate();
         isSuccess=true;
+        JdbcUtil.release(psmt,con);
         return isSuccess;
     }
     public List queryAllBooks() throws SQLException {
@@ -52,6 +53,7 @@ public class BookDao {
                     );
             list.add(book);
         }
+        JdbcUtil.release(rs,psmt,con);
         return list;
     }
     public boolean deleteById(int id) throws SQLException {
@@ -62,6 +64,7 @@ public class BookDao {
         psmt.setInt(1,id);
         psmt.executeUpdate();
         isSuccess=true;
+        JdbcUtil.release(psmt,con);
         return isSuccess;
     }
     public boolean deleteMany(int[] ids) throws SQLException {
@@ -73,6 +76,7 @@ public class BookDao {
             psmt.setInt(1,id);
             psmt.executeUpdate();
         }
+        JdbcUtil.release(psmt,con);
         return isSuccess;
     }
     public Book queryBookById(int id) throws SQLException {
@@ -94,8 +98,10 @@ public class BookDao {
                     rs.getString(9),
                     rs.getString(10)
             );
+            JdbcUtil.release(rs,psmt,con);
             return book;
         }
+        JdbcUtil.release(rs,psmt,con);
         return null;
     }
 
@@ -116,6 +122,7 @@ public class BookDao {
         psmt.setInt(10,book.getId());
         psmt.executeUpdate();
         isSuccess=true;
+        JdbcUtil.release(psmt,con);
         return isSuccess;
     }
     //用于分页，startIndex=起始索引，offset=偏移量
@@ -142,6 +149,7 @@ public class BookDao {
             );
             books.add(book);
         }
+        JdbcUtil.release(rs,psmt,con);
         return books;
     }
     public int counts(String sql) throws SQLException {
@@ -149,6 +157,7 @@ public class BookDao {
         PreparedStatement psmt=con.prepareStatement(sql);
         ResultSet rs= psmt.executeQuery();
         while(rs.next()) return rs.getInt(1);
+        JdbcUtil.release(rs,psmt,con);
         return 0;
     }
     //分页显示所有的书籍

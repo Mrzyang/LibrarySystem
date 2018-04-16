@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <!--默认配置-->
+    <default-config>
+        <property name="initialPoolSize">10</property>
+        <property name="maxIdleTime">30</property>
+        <property name="maxPoolSize">100</property>
+        <property name="minPoolSize">10</property>
+        <property name="maxStatements">200</property>
+    </default-config>
+
+    <!--配置连接池mysql-->
+    <named-config name="mysql">
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://118.89.22.167:3306/library?useUnicode=true&amp;characterEncoding=UTF8</property>
+        <property name="user">root</property>
+        <property name="password">zy19961114</property>
+        <property name="initialPoolSize">10</property>
+        <property name="maxIdleTime">30</property>
+        <property name="maxPoolSize">100</property>
+        <property name="minPoolSize">10</property>
+        <property name="maxStatements">200</property>
+    </named-config>
+</c3p0-config>

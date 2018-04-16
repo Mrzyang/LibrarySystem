@@ -24,7 +24,7 @@ public class CateDao {
             cate.setName(rs.getString(2));
             list.add(cate);
         }
-        con.close();
+        JdbcUtil.release(rs,psmt,con);
         return list;
     }
     public  String queryNameById(int id) throws SQLException {
@@ -34,7 +34,9 @@ public class CateDao {
         psmt.setInt(1,id);
         ResultSet rs=psmt.executeQuery();
         while (rs.next()){
-            return rs.getString(2);
+            String name=rs.getString(2);
+            JdbcUtil.release(rs,psmt,con);
+            return name;
         }
         return null;
     }

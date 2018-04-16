@@ -1,46 +1,35 @@
 package com.zy.utils;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.DriverManager;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
+
 
 public class JdbcUtil {
-	private static String driverClass;
-	private static String url;
-	private static String user;
-	private static String password;
-	static {
-		InputStream in=JdbcUtil.class.getClassLoader().getResourceAsStream("dbcfg.properties");
-		Properties prop=new Properties();
-		try {
-			prop.load(in);
-			driverClass=prop.getProperty("driverClass");
-			url=prop.getProperty("url");
-			user=prop.getProperty("user");
-			password=prop.getProperty("password");
-		}catch (IOException e) {
-			throw new ExceptionInInitializerError("read database file failed!");
-		}
-		try {
-		 Class.forName(driverClass);
-		}catch (ClassNotFoundException e) {
-			// TODO: handle exception
-			throw new ExceptionInInitializerError("loading driverClass'"+driverClass+"' failure!");
-		}
+	private static DataSource dataSource=null;
+	static{
+		dataSource=new ComboPooledDataSource("mysql");
 	}
-	public static Connection getConnecttion() throws SQLException{
-		Connection connection=(Connection)DriverManager.getConnection(url,user,password);
-		return  connection;
-	
+
+	/**
+	 * 获取数据库连接
+	 * @return
+	 */
+	public static Connection getConnecttion(){
+		java.sql.Connection conn=null;
+		try {
+			conn=dataSource.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conn;
 	}
 	
-	public static void release(ResultSet rs, Statement stmt, Connection conn) {
+	public static void release(ResultSet rs, PreparedStatement stmt, Connection conn) {
 		if(rs!=null) {
 			try {
 				rs.close();
@@ -62,6 +51,22 @@ public class JdbcUtil {
 				e.printStackTrace();
 			}
 		}
-		
+
+	}
+	public static void release(PreparedStatement stmt, Connection conn) {
+		if(stmt!=null) {
+			try {
+				stmt.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if(conn!=null) {
+			try {
+				conn.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
