@@ -101,14 +101,20 @@ public class BookServlet extends HttpServlet {
         String name=request.getParameter("bookname");
         int cateId= Integer.parseInt(request.getParameter("cateId"));
         double minprice;
+        double maxprice;
         try {
             //防止查询表单minprice输入为空转化为double出现异常
             minprice = Integer.valueOf(request.getParameter("minprice"));
         } catch (NumberFormatException e) {
             minprice = 0;
         }
+        try {
+            //防止查询表单minprice输入为空转化为double出现异常
+            maxprice = Integer.valueOf(request.getParameter("maxprice"));
+        } catch (NumberFormatException e) {
+            maxprice = 0;
+        }
 
-        String maxprice = request.getParameter("maxprice");
         String minpdate=request.getParameter("minPdate");
         String maxpdate=request.getParameter("maxPdate");
 
@@ -125,7 +131,7 @@ public class BookServlet extends HttpServlet {
         //sql拼接，以便号获取List<Book>和满足条件的count,这里是定义条件
         String baseSql="from book where price>="+minprice;  //如果前端表单传入minprice为空，则minprice=0为异常处理的结果
         String sql=baseSql;
-        if(!maxprice.equals("")) sql=baseSql+" and price<="+maxprice;        //如果前端表单maxprice输入不为空
+        if(maxprice!=0) sql=baseSql+" and price<="+maxprice;        //如果前端表单maxprice输入不为空
         if(!minpdate.equals("")) sql+=" and pdate>= '"+minpdate+"'";
         if(!maxpdate.equals("")) sql+=" and pdate<= '"+maxpdate+"'";
         if(cateId!=0) sql+=" and cateId="+cateId;
