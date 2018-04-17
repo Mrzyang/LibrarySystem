@@ -13,7 +13,6 @@
     border-radius: 5%;
     width: 630px;
     float: left;
-    background-color: ghostwhite;
 }
 .bookname{
     font-size: 30px;
@@ -39,4 +38,13 @@
     width: 800px;
     position: relative;
     top: -470px;
+}
+.bgBox{
+    background-color: ghostwhite;
+    position: absolute;
+    width: 800px;
+    height: 160px;
+    left: 530px;
+    z-index: -1;
+    border-radius: 10px;
 }

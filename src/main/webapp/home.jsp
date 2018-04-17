@@ -149,7 +149,7 @@
                             <li><a href="/book.do?type=${type}&page=${totalPages}${params}">尾页</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>1
             </form>
         </div>
     </div>
@@ -206,8 +206,11 @@
             alert("输入有误，时间区间右端必须比左端大！");
             return;
         }
-        $('#searchForm').submit();
+        $('#searchForm').submit();   原先的
+       // $.get("/book.do",$('#searchForm').serialize(),function (str) {
+      //  });
     }
+
 </script>
 
 

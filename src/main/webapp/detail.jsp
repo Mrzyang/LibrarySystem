@@ -53,6 +53,7 @@
             <div class="imgbox">
                 <img src="${book.img}" class="bookimg">
             </div>
+            <div class="bgBox"></div>
             <div class="bookcontent">
                 <P class="bookname">${book.name}</P>
                 <div class="info">
