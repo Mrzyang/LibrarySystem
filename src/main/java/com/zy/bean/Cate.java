@@ -13,12 +13,8 @@ public class Cate {
 
     public Cate(int id) {
         this.id = id;
-        CateDao cateDao=new CateDao();
-        try {
-            this.name=cateDao.queryNameById(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        CateDao cateDao = new CateDao();
+        this.name = cateDao.queryNameById(id);
     }
 
     public int getId() {
@@ -36,12 +32,4 @@ public class Cate {
     public void setName(String name) {
         this.name = name;
     }
-//    public void setName() {
-//        CateDao cateDao=new CateDao();
-//        try {
-//            this.name=cateDao.queryNameById(id);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

@@ -18,11 +18,7 @@ public class CateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CateDao cateDao=new CateDao();
         List list=null;
-        try {
-            list=cateDao.queryAllCates();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        list=cateDao.queryAllCates();
         Gson gson=new Gson();
         String json=gson.toJson(list);
         response.setCharacterEncoding("UTF-8");

@@ -12,31 +12,45 @@ import java.util.List;
 
 public class CateDao {
     public  Connection con;
-    public List queryAllCates() throws SQLException {
-        con= JdbcUtil.getConnecttion();
+    public List queryAllCates(){
+        PreparedStatement psmt=null;
+        ResultSet rs=null;
         List<Cate> list=new ArrayList<Cate>();
         String sql="select * from cate";
-        PreparedStatement psmt=con.prepareStatement(sql);
-        ResultSet rs=psmt.executeQuery();
-        while(rs.next()){
-            Cate cate=new Cate();
-            cate.setId(rs.getInt(1));
-            cate.setName(rs.getString(2));
-            list.add(cate);
+        try {
+            con= JdbcUtil.getConnecttion();
+            psmt=con.prepareStatement(sql);
+            rs=psmt.executeQuery();
+            while(rs.next()){
+                Cate cate=new Cate();
+                cate.setId(rs.getInt(1));
+                cate.setName(rs.getString(2));
+                list.add(cate);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.release(rs,psmt,con);
         }
-        JdbcUtil.release(rs,psmt,con);
         return list;
     }
-    public  String queryNameById(int id) throws SQLException {
-        con=JdbcUtil.getConnecttion();
+    public  String queryNameById(int id){
+        PreparedStatement psmt=null;
+        ResultSet rs=null;
         String sql="SELECT * from cate WHERE id=?";
-        PreparedStatement psmt=con.prepareStatement(sql);
-        psmt.setInt(1,id);
-        ResultSet rs=psmt.executeQuery();
-        while (rs.next()){
-            String name=rs.getString(2);
+        try {
+            con=JdbcUtil.getConnecttion();
+            psmt=con.prepareStatement(sql);
+            psmt.setInt(1,id);
+            rs=psmt.executeQuery();
+            while (rs.next()){
+                String name=rs.getString(2);
+                return name;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
             JdbcUtil.release(rs,psmt,con);
-            return name;
         }
         return null;
     }
