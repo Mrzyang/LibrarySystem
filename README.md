@@ -1,6 +1,6 @@
 ##                                 Java图书管理系统
 
-> 基于jsp+servlet+JavaBean
+> 基于jsp+servlet+JavaBean  (临时服务器访问异常，但是代码是没error的)
 #### 基本信息：
 
 - **开发环境**： windows+jdk1.8+Tomcat9+IDEA+mysql
@@ -34,7 +34,7 @@
 
 ![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/alipay.png)
 
-    QQ:   846965599  欢迎交流技术
+    邮箱:   phpzy@foxmail.com  欢迎交流技术(应付作业的勿扰，该程序实现简单，个人时间有限)
     CSDN:https://blog.csdn.net/qq_32388977
     2018-4-14
 
