@@ -63,25 +63,7 @@ INSERT INTO `cate` VALUES ('3', '医学');
 INSERT INTO `cate` VALUES ('4', '物理学');
 INSERT INTO `cate` VALUES ('5', '化学');
 
--- ----------------------------
--- Table structure for students
--- ----------------------------
-DROP TABLE IF EXISTS `students`;
-CREATE TABLE `students` (
-  `Sno` int(11) NOT NULL,
-  `Sname` varchar(255) NOT NULL,
-  `Sphone` varchar(255) DEFAULT NULL,
-  `Saddr` varchar(255) DEFAULT NULL,
-  `Sgender` int(11) NOT NULL,
-  `SdeptNo` int(11) NOT NULL,
-  PRIMARY KEY (`Sno`),
-  KEY `SdeptNo` (`SdeptNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of students
--- ----------------------------
-INSERT INTO `students` VALUES ('1', '张洋', '17671751371', '湖北武汉', '1', '1');
 
 -- ----------------------------
 -- Table structure for user
