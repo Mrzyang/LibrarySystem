@@ -93,7 +93,7 @@ public class Book {
         this.address = address;
     }
 
-    public Book(){
+    public Book()
 
     }
     public Book(int id, String name, double price, String author, int cateId, String pdate, String img, String description, String detail, String address) {
