@@ -149,7 +149,7 @@
                             <li><a href="/book.do?type=${type}&page=${totalPages}${params}">尾页</a></li>
                         </ul>
                     </div>
-                </div>1
+                </div>
             </form>
         </div>
     </div>
