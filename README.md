@@ -30,7 +30,7 @@
 > 求打赏已买服务器继续折腾部署的问题
 
 
-![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/aw.png)
+![image](https://github.com/Mrzyang/LibrarySystem/blob/master/src/main/webapp/assets/images/github/aw.jpg)
 
     邮箱:   phpzy@foxmail.com  欢迎交流技术
     本人大厂6年研发经验，接定制开发网站、app、微信小程序、毕业设计、学术论文
